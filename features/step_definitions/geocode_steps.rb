@@ -1,3 +1,5 @@
+require_relative "../../lib/spoof_ip"
+
 Given(/^a user with username "(.*?)" exists$/) do |username|
   user = Fabricate(:user, username: username)
 end
@@ -12,10 +14,12 @@ Given(/^the squeek with an IP address "(.*?)"$/) do |ip|
   ###
   # ENV['RAILS_TEST_ADDRESS'] = ip
 
-  require_relative "../../lib/spoof_ip"
-  spoof_ip = SpoofIp.new
-  spoof_ip.call(ip)
+  spoof_ip = SpoofIp.new(app, ip)
+  spoof_ip.call
   ###
+
+
+
   visit root_path
  click_link("Sign In")
  fill_in("Email / Username", :with => user.username)

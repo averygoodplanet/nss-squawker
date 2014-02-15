@@ -28,5 +28,5 @@ Squawker::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.middleware.use('SpoofIp', '64.71.24.19')
+  config.middleware.use(SpoofIp, "160.36.179.25")
 end

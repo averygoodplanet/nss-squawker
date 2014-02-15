@@ -15,11 +15,12 @@ Scenario:
 Scenario:
   Given the squeek with an IP address "160.36.179.25"
   When I go to the homepage
+  And show me the page
   Then the squeek should be labeled "Knoxville, Tennessee"
   And the squeek model's location field should be "Knoxville, Tennessee"
 
 Scenario:
-  Given the squeek with an IP address "0.0.0.0"
+  Given the squeek with an IP address "127.0.0.1"
   When I go to the homepage
   Then the squeek should be labeled "Unknown Location"
   And the squeek model's location field should be "Unknown Location"
