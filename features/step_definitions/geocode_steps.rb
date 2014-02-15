@@ -10,7 +10,11 @@ Given(/^the squeek with an IP address "(.*?)"$/) do |ip|
   # ** magic here to simulate whatever request.remote_ip = ip
   # then create squeak (which will generate it's own location field)
   ###
-  ENV['RAILS_TEST_ADDRESS'] = ip
+  # ENV['RAILS_TEST_ADDRESS'] = ip
+
+  require_relative "../../lib/spoof_ip"
+  spoof_ip = SpoofIp.new
+  spoof_ip.call(ip)
   ###
   visit root_path
  click_link("Sign In")
